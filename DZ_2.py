@@ -18,7 +18,7 @@ for i in reversed(range(len(a))):
     if a[i] in a[:i]:
         del a[i]
 print(a) # 1.1 in homework
-print(set(a)) # 1.1 in homework если нужно отобразить масив без повторений и удалений
+print(list(set(a))) # 1.1 in homework если нужно отобразить масив без повторений и удалений
 
 
 c = list(range (0 , 100 ))
