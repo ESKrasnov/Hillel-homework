@@ -35,6 +35,6 @@ for key in dict_one.keys():
 
 
 
-Keys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-dict = { t: t*t for t in Keys }
+keys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+dict = { t: t*t for t in keys }
 print(dict) # 4 in homework
