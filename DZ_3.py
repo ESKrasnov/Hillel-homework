@@ -6,19 +6,11 @@ vowels = "aeiou"
 
 str = 'qwertyuiopp'
 
-#for i in len(str):
+for i in str:
 
-#r = str.split().replace(consonants.split(), random.choice(vowels), len(str))
-#print(r)
+    i = str.replace(tconsonants, random.choice(vowels))
+    print(i)
 
-
-
-
-
-
-
-b = random.choice(vowels)
-print(b)
 #############
 # task 2 in homework
 data = [
@@ -37,32 +29,16 @@ data = [
 
 newlist = sorted(data, key=lambda  k: k['age'])
 print(newlist)
-
-from collections import Counter
+# 2.2 in homework
 from itertools import groupby
-from operator import itemgetter
+def key_func(k):
+    return k['city']
 
-#esults = {k
-#           : Counter(i for i in v)
-#          for k, v in groupby(sorted(((k, v)
-#                                       for i in data
-#                                       for k, v in i.items()),
-#                                      key=itemgetter(0)),
-#                              key=itemgetter(0))}
-#print(results)
 
-# ключевая функция сортировки
-keyfunc = lambda x:x['city']
 
-# сортируем список заданий по названию 'x[0]'
-city = sorted(data, key=keyfunc)
+data = sorted(data, key=key_func)
 
-# при группировке по заданиям применяем
-# ту же ключевую функцию сортировки
-for city, action in groupby(city , key=keyfunc):
-    print(city)
-    print('-' * len(city))
-sorted_data = sorted(data, key=lambda x:x['city'])
- # вывод
-        for _, 'name', 'age' in sorted_data:
-         print(f'  {} -> {}')
+for key, value in groupby(data, key_func):
+    print(key , ':')
+    print(list(value))
+
