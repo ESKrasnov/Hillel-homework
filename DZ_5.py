@@ -15,7 +15,12 @@ class ProcessInput:
                 return self.a * self.b
 
     def divide(self):
-        return self.a // self.b
+        try:
+            return self.a // self.b
+        except ZeroDivisionError:
+            print(f'ZeroDivisionError')
+
+
 
 proccess_input = ProcessInput(a=20, b=10)
 print(proccess_input.add())         # выведет 30
