@@ -18,7 +18,7 @@ class ProcessInput:
         try:
             return self.a // self.b
         except ZeroDivisionError:
-            print(f'ZeroDivisionError')
+            print(f'ZeroDivisionError,  b could be 0')
 
 
 
