@@ -40,23 +40,30 @@ print('only last octet of ip addresses:', ip_processing.get_last_octet())
 
 
 #2 in home work
-class File:
-    def __init__(self, path, mode):
-        self.path = path
-        self.mode = mode
-    def __enter__(self):
-        self.handle = open(self.path, self.mode)
-        return self.handle
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        self.handle.close()
-        return self.handle
-with File('new.txt', 'w') as handle:         #add text
-    handle.write('afdasdsafdsa')
-with File('new.txt', 'r') as handle:      # read text
-    for elem in handle:
-        print(elem)
-with File('new.txt', 'w') as handle:     # delete text
-    handle.close()
-    for elem in handle:
-        print(elem)
+
+class FilesProcessing:
+    def __init__(self, file_path):
+        self.file_path = file_path
+
+
+    def write(self, d):
+        with open(self.file_path, 'w') as f:
+            f.write(d)
+
+    def read(self):
+        with open(self.file_path, 'r') as f:
+            print(f.read())
+
+    def delete(self):
+        with open(self.file_path, 'w') as f:
+            f.truncate(0)
+
+
+
+files_processing = FilesProcessing('new.txt')
+files_processing.write(d="New data in the file")
+files_processing.read()
+files_processing.delete()
+
+
 
