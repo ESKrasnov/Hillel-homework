@@ -9,7 +9,6 @@ prerequisites  = https://www.aqa.science/
 import os
 import time
 
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -18,7 +17,9 @@ def create_docker_container():
     os.system("docker run -d -p 4444:4444 -p 5900:5900 --shm-size=2g "
               "--name web-test_chrome selenium/standalone-chrome-debug")
 
-    time.sleep(2)
+
+time.sleep(30)
+
 
 def remove_docker_container():
     os.system("docker stop web-test_chrome")
@@ -33,13 +34,10 @@ options.add_argument('--ignore-certificate-errors=yes')
 driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub',
                           options=options)
 
-
 url = ["https://www.aqa.science/"]
 driver.get(url[0])
 
-
-                                  ###   Login form
-
+###   Login form
 
 
 log_button = '/html/body/div/div[1]/div/ul/li/a'
@@ -48,7 +46,6 @@ login_button.click()
 
 username = 'admin'
 password = 'admin123'
-
 
 username_field = '//*[@id="id_username"]'
 password_field = '//*[@id="id_password"]'
@@ -63,8 +60,7 @@ l_button = '//*[@id="submit-id-submit"]'
 sumbit_button = driver.find_element(By.XPATH, l_button)
 sumbit_button.click()
 
-
-                               ###  Create user
+###  Create user
 
 
 url = ["https://www.aqa.science/admin/"]
@@ -94,7 +90,7 @@ s_button = '//*[@id="user_form"]/div/div/input[1]'
 save_button = driver.find_element(By.XPATH, s_button)
 save_button.click()
 
-                       ###    Read user
+###    Read user
 
 expected_element_path = '//*[@id="content"]/h2'
 
@@ -102,8 +98,7 @@ expected_element = driver.find_element(By.XPATH, expected_element_path)
 
 assert expected_element.text == 'Evgenii.Krasnov'
 
-
-                      ###    Update user
+###    Update user
 
 
 first_name = 'Evgenii'
@@ -123,10 +118,7 @@ s_button = '//*[@id="user_form"]/div/div/input[1]'
 save_button = driver.find_element(By.XPATH, s_button)
 save_button.click()
 
-
-
-
-                       ### Delete user
+### Delete user
 
 user_name = '//*[@id="result_list"]/tbody/tr[2]/th/a'
 open_user = driver.find_element(By.XPATH, user_name)
@@ -137,11 +129,10 @@ delete_button = '//*[@id="user_form"]/div/div/p/a'
 delete_user = driver.find_element(By.XPATH, delete_button)
 delete_user.click()
 
-button ='//*[@id="content"]/form/div/input[2]'
+button = '//*[@id="content"]/form/div/input[2]'
 confirmation = driver.find_element(By.XPATH, button)
 confirmation.click()
 
 assert user_name != 'Evgenii.Krasnov'
-
 
 remove_docker_container()
