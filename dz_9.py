@@ -145,3 +145,5 @@ assert user_name != 'Evgenii.Krasnov'
 
 
 remove_docker_container()
+
+"""hfefhehf"""
