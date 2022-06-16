@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 
 
 def create_docker_container():
-    os.system("docker run -d -p 4545:4444 -p 5900:5900 --shm-size=2g "
+    os.system("docker run -d -p 4141:4444 -p 5900:5900 --shm-size=2g "
               "--name web-test_chrome selenium/standalone-chrome-debug")
 
 
@@ -31,7 +31,7 @@ options = webdriver.ChromeOptions()
 options.add_argument('--ignore-ssl-errors=yes')
 options.add_argument('--ignore-certificate-errors=yes')
 
-driver = webdriver.Remote(command_executor='http://localhost:4545/wd/hub',
+driver = webdriver.Remote(command_executor='http://localhost:4141/wd/hub',
                           options=options)
 
 url = ["https://www.aqa.science/"]
