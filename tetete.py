@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 
 
 def create_docker_container():
-    os.system("docker run -d -p 4141:4444 -p 5900:5900 --shm-size=2g "
+    os.system("docker run -d -p 4141:4444 -p 5990:5990 --shm-size=2g "
               "--name web-test_chrome selenium/standalone-chrome-debug")
 
 
